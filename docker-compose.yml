@@ -1,0 +1,59 @@
+version: "3.7"
+
+services:
+
+  # logging:
+  #   container_name: ctw-bot-logging
+  #   build: ./logging
+  #   ports:
+  #     - "12201:12201/udp"
+  #   environment:
+  #     PORT: 12201
+  #     APPINSIGHTS_PERFORMANCE_METRICS: 0
+  #     APPINSIGHTS_INSTRUMENTATIONKEY: /run/secrets/APPINSIGHTS_INSTRUMENTATIONKEY
+  #     APPLICATION: ctw-bot
+  #   secrets:
+  #     - APPINSIGHTS_INSTRUMENTATIONKEY
+  #   restart: always
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #   entrypoint: /var/logging/start.sh
+
+  node:
+    container_name: ctw-bot-node
+    build: ./node
+    # depends_on:
+    #   - logging
+    networks:
+      - ctw-bot-network
+    logging:
+      driver: "gelf"
+      options:
+        gelf-address: "udp://localhost:12201"
+    environment:
+      APPINSIGHTS_INSTRUMENTATIONKEY: /run/secrets/APPINSIGHTS_INSTRUMENTATIONKEY
+      DISCORD_CLIENTID_FILE: /run/secrets/DISCORD_CLIENTID_FILE
+      DISCORD_GUILD_ID: "840437787194818571"
+      DISCORD_OWNER_ID: "84481289050152960"
+      DISCORD_TOKEN_FILE: /run/secrets/DISCORD_TOKEN_FILE
+      NODE_ENV: production
+      PORT: 3030
+    secrets:
+      - APPINSIGHTS_INSTRUMENTATIONKEY
+      - DISCORD_CLIENTID_FILE
+      - DISCORD_TOKEN_FILE
+    restart: always
+    entrypoint: /var/www/start.sh
+    privileged: true
+
+networks:
+  ctw-bot-network:
+    driver: bridge
+
+secrets:
+  APPINSIGHTS_INSTRUMENTATIONKEY:
+    file: ./secrets/APPINSIGHTS_INSTRUMENTATIONKEY
+  DISCORD_CLIENTID_FILE:
+    file: ./secrets/DISCORD_CLIENTID_FILE
+  DISCORD_TOKEN_FILE:
+    file: ./secrets/DISCORD_TOKEN_FILE

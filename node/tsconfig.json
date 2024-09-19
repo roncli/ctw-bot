@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "checkJs": true,
+        "esModuleInterop": true,
+        "lib": ["ES2017"],
+        "module": "CommonJS",
+        "moduleResolution": "node",
+        "outDir": "./.vscode/ts",
+        "resolveJsonModule": true,
+        "target": "ES2017"
+    },
+    "include": [
+        "**/*.d.ts",
+        "**/*.js"
+    ]
+}

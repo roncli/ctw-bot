@@ -1,0 +1,50 @@
+const Discord = require("../../discord"),
+    DiscordJs = require("discord.js"),
+    pjson = require("../../../package.json");
+
+// MARK: class Version
+/**
+ * A command that returns version and open source information about the bot.
+ */
+class Version {
+    // MARK: static get global
+    /**
+     * Indicates that this is a global command.
+     * @returns {boolean} Whether this is a global command.
+     */
+    static get global() {
+        return true;
+    }
+
+    // MARK: static command
+    /**
+     * The command data.
+     * @returns {DiscordJs.SlashCommandBuilder} The command data.
+     */
+    static command() {
+        return new DiscordJs.SlashCommandBuilder()
+            .setName("version")
+            .setDescription("Provides development information about the bot.");
+    }
+
+    // MARK: static async handle
+    /**
+     * The command handler.
+     * @param {DiscordJs.ChatInputCommandInteraction} interaction The interaction.
+     * @returns {Promise<boolean>} A promise that returns whether the interaction was successfully handled.
+     */
+    static async handle(interaction) {
+        await interaction.deferReply({ephemeral: true});
+
+        await interaction.editReply({
+            embeds: [
+                Discord.embedBuilder({
+                    description: `Classic Tetris Wars bot.  By roncli, Version ${pjson.version}.  Project is open source, visit https://github.com/roncli/ctw-bot.`
+                })
+            ]
+        });
+        return true;
+    }
+}
+
+module.exports = Version;
