@@ -27,7 +27,7 @@
         "@babel/core": "7.26.10",
         "@babel/eslint-parser": "7.26.10",
         "@stylistic/eslint-plugin": "1.5.4",
-        "@types/node": "22.13.11",
+        "@types/node": "22.13.13",
         "@types/node-schedule": "2.1.7"
     },
     "engines": {
