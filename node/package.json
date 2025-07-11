@@ -21,7 +21,7 @@
         "@roncli/node-application-insights-logger": "roncli/node-application-insights-logger#v1.0.17",
         "discord.js": "14.14.1",
         "node-schedule": "2.1.1",
-        "timezonecomplete": "5.12.4"
+        "timezonecomplete": "5.14.1"
     },
     "devDependencies": {
         "@babel/core": "7.28.0",
