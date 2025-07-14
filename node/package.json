@@ -28,7 +28,7 @@
         "@babel/eslint-parser": "7.28.0",
         "@stylistic/eslint-plugin": "1.5.4",
         "@types/node": "24.0.13",
-        "@types/node-schedule": "2.1.7"
+        "@types/node-schedule": "2.1.8"
     },
     "engines": {
         "node": ">=16.0.0"
