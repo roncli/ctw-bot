@@ -18,7 +18,7 @@
         "url": "https://github.com/roncli/ctw-bot.git"
     },
     "dependencies": {
-        "@roncli/node-application-insights-logger": "roncli/node-application-insights-logger#v1.0.17",
+        "@roncli/node-application-insights-logger": "roncli/node-application-insights-logger#v2.0.0",
         "discord.js": "14.14.1",
         "node-schedule": "2.1.1",
         "timezonecomplete": "5.12.4"
