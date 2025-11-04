@@ -24,7 +24,7 @@
         "timezonecomplete": "5.12.4"
     },
     "devDependencies": {
-        "@babel/core": "7.28.4",
+        "@babel/core": "7.28.5",
         "@babel/eslint-parser": "7.28.5",
         "@stylistic/eslint-plugin": "1.5.4",
         "@types/node": "24.10.0",
